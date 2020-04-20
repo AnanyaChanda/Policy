@@ -1,10 +1,8 @@
 package com.example.demo.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.entity.Policy;
 import com.example.demo.exception.PolicyNotFoundException;
 import com.example.demo.repo.PolicyRepository;
@@ -15,7 +13,6 @@ public class PolicyService {
 	
 	@Autowired
 	PolicyRepository repo;
-
 	
 	/**
 	 * business logic to get all the policy record
@@ -24,7 +21,11 @@ public class PolicyService {
 	 * @return
 	 */
 	public List<Policy> getAllPolicy(){			
-		return repo.findAll();	
+		List<Policy> policyList= repo.findAll();
+		if(policyList.isEmpty()) {
+			throw new PolicyNotFoundException("Currently there is no policy available");
+		}
+		return policyList;		
 	}
 	
 	
@@ -37,10 +38,9 @@ public class PolicyService {
 	 */
 	public String deletePolicy(long id) {
 		String message="Policy with Id "+id+" deleted successfully";
-		repo.findById(id).orElseThrow(()->new PolicyNotFoundException("Policy Id "+id+" does not exist"));		
+		repo.findById(id).orElseThrow(()->new PolicyNotFoundException("The requested policy Id "+id+" does not exist in the system"));		
 		repo.deleteById(id);
-		return message;
-			
+		return message;			
 		}
 	
 	
@@ -51,9 +51,9 @@ public class PolicyService {
 	 * @param policy
 	 * @return
 	 */
-	public Policy saveOrUpdatePolicy(Policy policy) {	
+	public Policy saveOrUpdatePolicy(Policy policy){	
 		return repo.save(policy);
-		
+			
 	}
 	 
 	/**
@@ -62,9 +62,8 @@ public class PolicyService {
 	 * @param 
 	 * @return
 	 */
-	public Policy getPolicy(long id) throws PolicyNotFoundException {
-		return repo.findById(id).orElseThrow(()->new PolicyNotFoundException("Policy Id "+id+" does not exist"));
-	
+	public Policy getPolicy(long id) {
+		return repo.findById(id).orElseThrow(()->new PolicyNotFoundException("The requested policy Id "+id+" does not exist in the system"));
     }
 
 	

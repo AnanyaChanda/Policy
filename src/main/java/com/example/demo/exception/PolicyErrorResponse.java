@@ -2,18 +2,19 @@ package com.example.demo.exception;
 
 import java.util.List;
 
-public class ErrorResponse {
+public class PolicyErrorResponse {
 	
 	private String message;
 	private List<String> details;
-		
-	public ErrorResponse(String message, List<String> details) {
+	private int status;
+
+	public PolicyErrorResponse(String message, List<String> details, int status) {
 		super();
 		this.message = message;
 		this.details = details;
+		this.status = status;
+		
 	}
-	
-	
 	public String getMessage() {
 		return message;
 	}
@@ -26,6 +27,18 @@ public class ErrorResponse {
 	public void setDetails(List<String> details) {
 		this.details = details;
 	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
+		
+	
+	
+	
+
 	
 	
 

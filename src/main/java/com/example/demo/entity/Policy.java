@@ -6,8 +6,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-
-
 @Entity
 public class Policy {
 	
@@ -66,12 +64,6 @@ public class Policy {
 
 	public void setPremiumAmount(double premiumAmount) {
 		this.premiumAmount = premiumAmount;
-	}
-	
-	
-	
-
-	
-	
+	}	
 
 }
