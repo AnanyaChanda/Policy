@@ -31,7 +31,6 @@ public class PolicyController {
 	 * @param policyId
 	 * @return
 	 */
-	@CrossOrigin(origins = "http://example.com")
 	@GetMapping("/plan/getAll")
 	public List<Policy> getAllPolicy(){
 		return policyService.getAllPolicy();
@@ -43,7 +42,7 @@ public class PolicyController {
 	 * @return
 	 */
 	@DeleteMapping("/plan/{planId}")
-	public String deletePolicy(@PathVariable("planId") long planId){
+	public String deletePolicy(@PathVariable("planId") String planId){
 		return policyService.deletePolicy(planId);	
 	}
 	
@@ -77,9 +76,8 @@ public class PolicyController {
 	 * @return
 	 */
 	@GetMapping("/plan/{planId}")
-	public Policy getPolicy(@PathVariable long planId) {	
-		return policyService.getPolicy(planId);
-			
+	public Policy getPolicy(@PathVariable String planId) {	
+		return policyService.getPolicy(planId);			
 		}
 	
 	

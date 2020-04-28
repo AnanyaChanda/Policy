@@ -36,7 +36,7 @@ public class PolicyService {
 	 * @param policy
 	 * @return
 	 */
-	public String deletePolicy(long id) {
+	public String deletePolicy(String id) {
 		String message="Policy with Id "+id+" deleted successfully";
 		repo.findById(id).orElseThrow(()->new PolicyNotFoundException("The requested policy Id "+id+" does not exist in the system"));		
 		repo.deleteById(id);
@@ -62,7 +62,7 @@ public class PolicyService {
 	 * @param 
 	 * @return
 	 */
-	public Policy getPolicy(long id) {
+	public Policy getPolicy(String id) {
 		return repo.findById(id).orElseThrow(()->new PolicyNotFoundException("The requested policy Id "+id+" does not exist in the system"));
     }
 

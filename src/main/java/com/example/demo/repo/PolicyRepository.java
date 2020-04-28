@@ -7,6 +7,6 @@ import com.example.demo.entity.Policy;
 
 //repository that extends JPARepository 
 @Repository
-public interface PolicyRepository  extends JpaRepository<Policy,Long>{
+public interface PolicyRepository  extends JpaRepository<Policy,String>{
 
 }
